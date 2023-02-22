@@ -149,11 +149,11 @@ export class Heartbeat {
         this.rescan.push(rescanFlag);
       }
       // Draw face
-      cv.rectangle(this.frameRGB, new cv.Point(this.face.x, this.face.y),
-        new cv.Point(this.face.x+this.face.width, this.face.y+this.face.height),
+      cv.rectangle(this.frameRGB, new cv.Point(this.face.x + 40, this.face.y + 80),
+        new cv.Point(this.face.x+this.face.width - 40, this.face.y+this.face.height + 0),
         [0, 255, 0, 255]);
       // Apply overlayMask
-      this.frameRGB.setTo([255, 0, 0, 255], this.overlayMask);
+      this.frameRGB.setTo([0, 255, 0, 255], this.overlayMask);
       cv.imshow(this.canvasId, this.frameRGB);
     } catch (e) {
       console.log("Error capturing frame:");
@@ -472,7 +472,7 @@ export class Heartbeat {
   // Draw bpm string to overlayMask
   drawBPM(bpm) {
     cv.putText(this.overlayMask, bpm.toFixed(0).toString(),
-      new cv.Point(this.face.x, this.face.y - 10),
+      new cv.Point(this.face.x + 150, this.face.y + 80 - 10),
       cv.FONT_HERSHEY_PLAIN, 1.5, [255, 0, 0, 255], 2);
   }
   // Clean up resources
